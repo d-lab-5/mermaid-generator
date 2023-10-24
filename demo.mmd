@@ -1,0 +1,27 @@
+graph TD
+    A[Start] --> B{Check if mmdc is installed}
+    B -->|Yes| C[Print mmdc version]
+    B -->|No| D[Print installation instructions]
+    C --> E[Ask for input file name]
+    D --> Z[End]
+    E --> F{Check if input file exists}
+    F -->|Yes| G[Ask for output file type]
+    F -->|No| Y[Print error message and end]
+    G --> H[Ask for theme choice]
+    H --> I[Read input file]
+    I --> J{Check if read was successful}
+    J -->|Yes| K[Write to temp.mmd file]
+    J -->|No| X[Print error message and end]
+    K --> L{Check if write was successful}
+    L -->|Yes| M[Run mmdc to create output file]
+    L -->|No| W[Print error message and end]
+    M --> N{Check if mmdc run was successful}
+    N -->|Yes| O[Print output file creation message]
+    N -->|No| V[Print error message and end]
+    O --> P{Check if output file exists}
+    P -->|Yes| Q[Delete temp.mmd file]
+    P -->|No| U[Print error message and end]
+    Q --> R{Check if delete was successful}
+    R -->|Yes| S[Print temp.mmd deletion message]
+    R -->|No| T[Print error message and end]
+    S --> Z[End]
