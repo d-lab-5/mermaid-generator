@@ -1,5 +1,5 @@
 graph TD
-    A[Start] --> B{Check if mmdc is installed}
+    A[ Start ] --> B{Check if mmdc is installed}
     B -->|Yes| C[Print mmdc version]
     B -->|No| D[Print installation instructions]
     C --> E[Ask for input file name]
@@ -24,4 +24,4 @@ graph TD
     Q --> R{Check if delete was successful}
     R -->|Yes| S[Print temp.mmd deletion message]
     R -->|No| T[Print error message and end]
-    S --> Z[End]
+    S --> Z[ End ]
