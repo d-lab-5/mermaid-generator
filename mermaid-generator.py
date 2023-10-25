@@ -3,8 +3,6 @@
 # DLAB5
 # This program is a simple tool to convert text files into diagrams using the mermaid syntax. It requires the installation of the mermaid command-line interface (mmdc) from npm. The program prompts the user for the input file name, the output file type, and the theme choice. It then creates a temporary file with the mermaid syntax and runs mmdc to generate the output file. The program prints a message when the output file is created and deletes the temporary file.
 
-
-
 import os
 
 try:
@@ -31,9 +29,17 @@ theme = themes[int(theme_choice)]
 with open(input_file, 'r') as f:
     lines = f.readlines()
 
+line_count = 1
 with open('temp.mmd', 'w') as f:
     for line in lines:
-        f.write(line.rstrip('\n') + ';\n')
+        if line_count < 2:
+            diagram_type = line.rstrip('\n')
+            print("Diagram type = " + diagram_type)
+        if 'mindmap' in diagram_type:
+            f.write(line)
+        else:
+            f.write(line.rstrip('\n') + ';\n')
+        line_count = line_count + 1
 
 # Run mmdc to create the output file based on the chosen file type
 output_file = os.path.splitext(input_file)[0] + '.' + output_file_type
@@ -42,6 +48,6 @@ os.system("mmdc -i temp.mmd -o " + output_file + " -t " + theme)
 
 print(f"Output file {output_file} has been created.")
 
-# Delete temp.mmd after successful image creation
+Delete temp.mmd after successful image creation
 os.remove('temp.mmd')
 print("Temporary file temp.mmd has been deleted.")
