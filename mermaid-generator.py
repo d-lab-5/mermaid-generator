@@ -48,6 +48,6 @@ os.system("mmdc -i temp.mmd -o " + output_file + " -t " + theme)
 
 print(f"Output file {output_file} has been created.")
 
-Delete temp.mmd after successful image creation
+#Delete temp.mmd after successful image creation
 os.remove('temp.mmd')
 print("Temporary file temp.mmd has been deleted.")
